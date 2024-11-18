@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+
+
+<head>
+    <!-- FONTS -->
+
+    <!-- LONDRINA SOLID-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
+
+    <!-- FONTS -->
+
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your profile Flappy PIP</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+
+    body{
+        background-image: url('Images/RegisterBackground.png');
+        font-family: "Londrina Solid", sans-serif;
+    }
+
+    .profile-header{
+        display: flex;
+        gap: 25px;
+
+        font-weight: bold;
+        color: white;
+        -webkit-text-stroke: .1rem black;
+
+        padding: 2vh 6vw;
+    }
+
+    .profile-header img{
+        width: 15vw;
+    }
+
+    .profile-welcome{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        padding: 2rem 0;
+        letter-spacing: 4px;
+    }
+
+    .profile-welcome>label{
+        font-size: 3rem;
+        -webkit-text-stroke: .13rem black;
+    }
+
+    .online-status{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        
+        font-size: 2rem;
+    }
+
+    .online-status>div{
+        height: 25px;
+        width: 25px;
+
+        background: #00FF00;
+        border: 2px solid #009d00;
+        border-radius: 50px;
+    }
+
+    .options-holder{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        gap: 2vh;
+        
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+        
+        padding: 0vh 6vw;
+    }
+
+    .options-holder h1{
+        -webkit-text-stroke: .1rem black;
+    }
+
+    #deleteaccount{
+        color: white;
+        text-shadow: 5px 5px 4px rgba(0,0,0,.5);
+        font-size: 1.4rem;
+        font-weight: bold;
+        font-family: "Londrina Solid", sans-serif;
+
+        background-color: #FF2E2E;
+        border: 5px solid #FF0000;
+
+        letter-spacing: 4px;
+        padding: 10px 25px;
+        border-radius: 15px;
+    }
+
+    #changepassword{
+        color: white;
+        text-shadow: 5px 5px 4px rgba(0,0,0,.5);
+        font-size: 1.4rem;
+        font-weight: bold;
+        font-family: "Londrina Solid", sans-serif;
+
+        background-color: #2E2EFF;
+        border: 5px solid #0000FF;
+
+        letter-spacing: 4px;
+        padding: 10px 25px;
+        border-radius: 15px;
+    }
+
+</style>
+
+<body>
+
+    <header>
+        <img src="Images/LOGO.png">
+        <button>Download</button>
+    </header>
+
+    <div class="profile-header">
+
+        <img src="Images/antonino.png">
+        
+        <div class="profile-welcome">
+            <div class="online-status">
+                <div></div>
+                <label>online</label>
+            </div>
+
+            <label>Olá, admin!</label>
+        </div>
+
+    </div>
+
+
+    <div class="options-holder">
+        <h1>Options:</h1>
+        <button id="deleteaccount">Delete account</button>
+        <button id="changepassword">Change password</button>
+    </div>
+    
+
+</body>
+
+
+</html>

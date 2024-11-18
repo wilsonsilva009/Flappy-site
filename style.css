@@ -1,0 +1,122 @@
+html{
+    overflow: hidden;
+}
+
+body{
+    position: relative;
+
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5vh 4vw;
+}
+
+header button{
+    font-family: 'Londrina Solid', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    
+    padding: .6rem 1.8rem;
+    border: none;
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 50px rgba(0,0,0,.15), 0px 5px rgba(0,0,0,.25);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, .3);
+}
+
+header img{
+    width: 50vh;
+}
+
+/*------   Form   ------*/
+form{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 12.5vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Londrina Shadow", sans-serif;
+
+    width: 25vw;
+    height: fit-content;
+    gap: 2vh;
+
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    backdrop-filter: blur(2px);
+}
+
+form>label{
+    display: flex;
+    justify-content: center;
+
+    font-size: 4vw;
+    text-align: center;
+
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 5px;
+}
+
+.input-fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3vh;
+}
+
+.input-field{
+    font-size: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 1vh;
+    letter-spacing: 4px;
+}
+
+.input-field input{
+    background: rgba(217,217,217,.5);
+    border-radius: 50px;
+    border: 3px solid black;
+
+    height: 23px;
+    margin-left: 10px;
+    padding-left: 15px;
+
+    font-weight: bold;
+    font-size: 1.5vw;
+    letter-spacing: 1px;
+}
+
+form img {
+    position: absolute;
+    width: 6.5vw;
+    bottom: 2vh;
+    right: 1.5vw;
+}
+
+/*------   Pipes   ------*/
+#pipe1, #pipe2{
+    position: absolute;
+}
+
+#pipe1{
+    top: -25vh;
+    right: 30vw;
+}
+
+#pipe2{
+    bottom: -25vh;
+    right: 30vw;
+}
