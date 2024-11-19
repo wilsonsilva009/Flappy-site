@@ -120,3 +120,36 @@ form img {
     bottom: -25vh;
     right: 30vw;
 }
+
+/*------   Erro   ------*/
+.error-holder{
+    opacity: 0;
+
+    font-family: "Londrina Solid", sans-serif;
+    font-weight: bold;
+    letter-spacing: 4px;
+
+    position: absolute;
+    bottom: 7vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 75px;
+    
+
+    background-color: #E21717;
+    border: 5px solid rgba(255,255,255,0.75);
+    border-radius: 25px;
+
+    box-shadow: 4px 6px 4px 0px rgba(0,0,0,.5);
+
+    transition: opacity .3s ease;
+}
+
+.error-holder label{
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 3px 4px 2px rgba(0,0,0,.25);
+}
