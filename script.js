@@ -55,6 +55,8 @@ async function Login(){
             } else {
                 ShowError("Login inválido");
             }
+        } else{
+            ShowError("Utilizador não existe");
         }
 
     } catch (error) {
@@ -105,5 +107,8 @@ async function Register(){
     .then(response => response.json())
     .then(data => console.log('Data: ', data))
     .catch(error => console.error('Erro ao enviar dados:', error));
+
+    localStorage.setItem("Username",Username)
+    window.location.href = "profile.html"
 
 } 
