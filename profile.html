@@ -25,6 +25,12 @@
         font-family: "Londrina Solid", sans-serif;
     }
 
+    .image-holder{
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+    }
+
     .profile-header{
         display: flex;
         gap: 25px;
@@ -38,6 +44,13 @@
 
     .profile-header img{
         width: 15vw;
+    }
+
+    #edit-button{
+        position: absolute;
+        width: 5vw;
+        right: 0;
+        bottom: 0;
     }
 
     .profile-welcome{
@@ -125,12 +138,15 @@
 
     <header>
         <img src="Images/LOGO.png">
-        <button>Download</button>
+        <button><a href="download.html" target="_blank">Download</a></button>
     </header>
 
     <div class="profile-header">
 
-        <img src="Images/antonino.png">
+        <div class="image-holder">
+            <img src="Images/antonino.png">
+            <img id="edit-button" src="Images/EditButton.png">
+        </div>
         
         <div class="profile-welcome">
             <div class="online-status">
@@ -152,6 +168,20 @@
     
 
 </body>
+
+<script>
+    /*---   Logic for data   ---*/
+    const Username = localStorage.getItem("Username");
+
+    //No user found, return to login
+    if (!Username){
+        window.location.href = "index.html";
+    }
+
+    document.querySelector(".profile-welcome>label").innerText = `Olá, ${Username}`;
+
+    
+</script>
 
 
 </html>

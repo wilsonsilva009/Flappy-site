@@ -19,51 +19,63 @@ function ShowError(Message){
 
 }
 
-function UserExists(User){
-    var URL = FirebaseURL + User + ".json"
+async function UserExists(User) {
+    var URL = FirebaseURL + User + ".json";
     
-    fetch(URL)
-    .then(response => response.json())
-    .then(data => {
+    try {
+        const response = await fetch(URL);
+        const data = await response.json();
+        
         if (data !== null) {
-            if (data.password){ 
-                alert(data.password);
-                return true;
-            }
-        } else{return false}})
+            return true;
+        }
+
+        return false;
+
+    } catch (error) {
+        console.error("Error fetching user data:\n", error);
+        return false;
+    }
 }
 
-function Login(){
+async function Login(){
     const Username = document.getElementById("username").value;
     const Password = document.getElementById("password").value;
     
-    var URL = FirebaseURL + Username + ".json"
+    var URL = FirebaseURL + Username + ".json";
 
-    fetch(URL)
-    .then(response => response.json())
-    .then(data => {
+    try {
+        const response = await fetch(URL);
+        const data = await response.json();
+        
         if (data !== null) {
-            
             if (data.password == Password) {
-                //Successful login here!
+                localStorage.setItem("Username",Username)
+                window.location.href = "profile.html"
             } else {
-                ShowError("Login inválido")
+                ShowError("Login inválido");
             }
+        }
 
-        }})
+    } catch (error) {
+        console.error("Error fetching user data:\n", error);
+    }
 }
 
 
-function Register(){
+async function Register(){
     const Username = document.getElementById("username").value;
     const Password = document.getElementById("password").value;
+
 
     if (Username == "" || Password == ""){
         ShowError("Dados inválidos");
         return;
     }
 
-    if (UserExists){
+
+    const Exists = await UserExists(Username);
+    if (Exists){
         ShowError("O utilizador já existe");
         return;
     }
