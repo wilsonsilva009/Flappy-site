@@ -240,6 +240,111 @@
         height: 70%;
     }
 
+	/*     STATS     */
+	.stats-holder{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		position: absolute;
+		top: 20vh;
+		right: 10vw;
+
+		width: 31vw;
+		height: 75vh;
+
+		background-color: rgb(0 62 101 / 90%);
+		border-radius: 15px;
+		overflow-y: auto;
+		
+		-ms-overflow-style: none;
+        scrollbar-width: none; /* Esconder scroll bar */
+
+		color: white;
+		letter-spacing: 2px;
+	}
+
+	.stats-holder>div:not(.achievements-list, .items-grid){
+		min-height: 3px;
+        width: 80%;
+        border-radius: 60px;
+        
+        background-color: #D9D9D9;
+	}
+
+	.stats-holder label{
+		font-size: 1.5rem;
+	}
+
+	.stats-holder>*{
+		margin: 10px 0;
+	}
+
+	.items-grid{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: space-evenly;
+		width: 80%;
+		gap: 20px;
+	}
+
+	.items-grid>div{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.achievements-list{
+		display: grid;
+		grid-template-columns: 1fr;
+		width: 80%;
+		gap: 15px;
+	}
+
+	.achievements-list>div{
+		display: flex;
+		flex-direction: column;
+
+		background-color: rgba(38,38,38,.5);
+		border-radius: 17px;
+		padding: 10px;
+	}
+
+	.achievements-list>div>label{
+		text-align: center;
+	}
+
+	.achievement-progress{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+
+	.progress-bar{
+		height: 10px;
+		width: 80%;
+
+		border-radius: 60px;
+
+		background-color: #D9D9D9;
+	}
+
+	.progress-bar>div{
+		width: 50%;
+		height: 100%;
+
+		border-radius: 60px;
+
+		background-color: #F7A775;
+	}
+
+	#stats{
+		text-align: center;
+		line-height: 2rem;
+	}
 </style>
 
 <body>
@@ -266,6 +371,55 @@
         </div>
 
     </div>
+
+	<div class="stats-holder">
+
+		<label>Itens</label>
+		<div></div>
+		<div class="items-grid">
+			<div><img src="Images/Check.png"><label>0</label></div>
+			<div><img src="Images/Check.png"><label>0</label></div>
+			<div><img src="Images/Check.png"><label>0</label></div>
+		</div>
+
+		<label>Conquistas</label>
+		<div></div>
+		<div class="achievements-list">
+			<div>
+				<label>As noções</label>
+				<div class="achievement-progress">
+					<label>2/4</label>
+					<div class="progress-bar"><div></div></div>
+				</div>
+			</div>
+		</div>
+
+		<label>Estatísticas</label>
+		<div></div>
+		<label id="stats">
+			Games played<br>
+			50<br><br>
+
+			Seconds survived<br>
+			163s<br><br>
+
+			Distance traveled<br>
+			185km<br><br>
+
+			Obstacles overcome<br>
+			50<br><br>
+
+			Favorite power<br>
+			DoubleCoins<br><br>
+
+			Coins collected<br>
+			1820c<br><br>
+
+			Coins spent<br>
+			150c<br><br>
+		</label>
+
+	</div>
 
 
     <div class="options-holder">
