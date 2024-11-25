@@ -94,11 +94,48 @@ async function Register(){
             "SlowTime": 0,
             "SmallSize": 0,
             "Invulnerability": 0
+        },
+        "achievements" : {
+            "Online" : {
+                "Description" : "Login for the first time",
+                "Progress" : [0,1]
+            },
+            "The beginning" : {
+                "Description" : "Survive for 30 seconds",
+                "Progress" : [0,30]
+            },
+            "Bring home the bacon" : {
+                "Description" : "Collect 50 coins",
+                "Progress" : [25,50]
+            },
+            "What a deal!" : {
+                "Description" : "Buy something from the shop",
+                "Progress" : [0,1]
+            },
+            "Streamlined" : {
+                "Description" : "Use an item",
+                "Progress" : [0,1]
+            },
+            "All over again" : {
+                "Description" : "Survive until sunrise",
+                "Progress" : [0,1]
+            }
+        },
+        "stats" : {
+            "GamesPlayed" : 0,
+            "SecondsSurvived" : 0,
+            "DistanceTraveled" : 0,
+            "CoinsCollected" : 0,
+            "CoinsSpent" : 0,
+            "ObstaclesOvercome" : 0,
+            "FavoritePower" : 0
         }
     }
 
+
     const jsonData = JSON.stringify(DATA);
 
+    // Fix here -------------------------------------------------------
     fetch(URL, {
         method: 'PUT',
         headers: {},
