@@ -1,7 +1,3 @@
-html{
-    overflow: hidden;
-}
-
 a:-webkit-any-link{
     color: inherit;
     text-decoration: inherit;
@@ -27,7 +23,7 @@ header{
 
 header button{
     font-family: 'Londrina Solid', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(10px, 5vw, 35px);
     letter-spacing: 3px;
     font-weight: bolder;
     
@@ -39,7 +35,23 @@ header button{
 }
 
 header img{
-    width: 50vh;
+    width: clamp(10px, 50vw, 350px);
+    animation: img-anim 3s ease-in-out infinite backwards;
+}
+
+@keyframes img-anim {
+    0%{
+        transform: rotate(-7deg) scale(1.075);
+    }
+
+    50%{
+        transform: rotate(7deg) scale(.975);
+    }
+
+    100%{
+        transform: rotate(-7deg) scale(1.075);
+    }
+
 }
 
 /*------   Form   ------*/
@@ -67,7 +79,7 @@ form>label{
     display: flex;
     justify-content: center;
 
-    font-size: 4vw;
+    font-size: clamp(40px, 4vw, 70px);
     text-align: center;
 
     -webkit-text-stroke: 1px black;
@@ -82,7 +94,7 @@ form>label{
 }
 
 .input-field{
-    font-size: 2.5vw;
+    font-size: clamp(30px, 3vw, 40px);
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -100,13 +112,13 @@ form>label{
     padding-left: 15px;
 
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: clamp(20px, 1.5vw, 30px);
     letter-spacing: 1px;
 }
 
 form img {
     position: absolute;
-    width: 6.5vw;
+    width: clamp(40px, 6.5vw, 95px);
     bottom: 2vh;
     right: 1.5vw;
 }
@@ -114,6 +126,8 @@ form img {
 /*------   Pipes   ------*/
 #pipe1, #pipe2{
     position: absolute;
+    z-index: -1;
+    width: 15vh;
 }
 
 #pipe1{
@@ -157,4 +171,178 @@ form img {
     color: white;
     font-size: 1.5rem;
     text-shadow: 3px 4px 2px rgba(0,0,0,.25);
+}
+
+/*     PIP ANIMATION     */
+#coin{
+    position: absolute;
+    transform: scale(1.5);
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, .5));
+    left: 60vw;
+    top: 47vh;
+    z-index: -1;
+
+    animation: coin-anim 10s ease backwards infinite
+}
+
+#pip{
+    position: absolute;
+    transform: scale(.4);
+    left: -15vw;
+    top: 45vh;
+    z-index: -1;
+
+    animation: pip-jump 10s ease-in-out backwards infinite, pip-move 10s linear backwards infinite;
+}
+
+@keyframes pip-move {
+    0%{left: -15vw}
+    100%{left: 100vw}
+}
+
+@keyframes coin-anim {
+    0%{
+        opacity: 1;
+        
+    }
+
+    53%{
+        opacity: 1;
+        transform: scale(1.5) translateY(0px);
+    }
+
+    56%{
+        opacity: 0;
+        transform: scale(1.5) translateY(-25px) rotateY(180deg);
+    }
+}
+
+@keyframes pip-jump {
+    0% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    5% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    10% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    15% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    20% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    25% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    30% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    35% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    40% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    45% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    50% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    55% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    60% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    65% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    70% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    75% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    80% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    85% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    90% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+
+    95% {
+        top: 40vh;
+        transform: scale(.4) rotate(-15deg);
+    }
+
+    100% {
+        top: 45vh;
+        transform: scale(.4) rotate(15deg);
+    }
+}
+
+
+
+/*     MOBILE DEVICES     */
+
+@media (max-width: 600px) {
+    #pipe1, #pipe2{
+        transform: scale(.5);
+    }
+
+    form{
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        width: 75vw;
+        margin: 0;
+    }
+
+    form img{
+        width: clamp(75px, 6.5vw, 95px);
+    }
+
 }

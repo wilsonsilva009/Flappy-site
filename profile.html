@@ -69,6 +69,8 @@
     .profile-welcome>label{
         font-size: 3rem;
         -webkit-text-stroke: .13rem black;
+        word-break: break-word;
+        width: 100%;
     }
 
     .online-status{
@@ -336,9 +338,9 @@
 		width: 50%;
 		height: 100%;
 
-		border-radius: 60px;
+		border-radius: 60px 0 0 60px;
 
-		background-color: #F7A775;
+		background-color: #FF6200;
 	}
 
 	#stats{
@@ -346,12 +348,48 @@
 		line-height: 2rem;
         font-size: 1.5rem;
 	}
+
+    /*     MOBILE     */
+    @media (max-width: 600px) {
+        .profile-header{
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-header img{
+            width: 50vw;
+        }
+        
+        #edit-button{
+            width: 15vw;
+        }
+
+        .stats-holder{
+            position: static;
+            width: 90vw;
+            margin: 0 auto;
+        }
+
+        .options-holder{
+            padding: 5vh 4vw;
+        }
+
+        .changepassword-holder{
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .deleteconfirm-holder{
+            top: 75%;
+            width: 75vw;
+        }
+    }
 </style>
 
 <body>
 
     <header>
-        <img src="Images/LOGO.png">
+        <a href="index.html"><img src="Images/LOGO.png"></a>
         <button><a href="download.html" target="_blank">Download</a></button>
     </header>
 
@@ -440,11 +478,12 @@
             
             //Fill powers
             const powers = data["powers"];
-            for (power in powers){
-                if (powers[power] > 0)
-                    document.querySelector(".items-grid").innerHTML += `<div><img src="Images/Check.png"><label>${data["powers"][power]}</label></div>`;
+            if (powers.length){
+                for (power in powers){
+                    if (powers[power] > 0)
+                        document.querySelector(".items-grid").innerHTML += `<div><img src="Images/${power}.png" width="100%"><label>${data["powers"][power]}</label></div>`;
+                }
             }
-
             //Fill achievements
             const achievements = data["achievements"];
             console.log(achievements);
@@ -452,13 +491,17 @@
                 const progress1 = achievements[achievement]["Progress"][0];
                 const progress2 = achievements[achievement]["Progress"][1];
 
-                document.querySelector(".achievements-list").innerHTML += `<div><label>${achievement}</label><div class="achievement-progress"><label style="font-size: 1.5rem;">${progress1}/${progress2}</label><div class="progress-bar"><div style="width: ${(progress1 / progress2) * 100}%;"></div></div></div></div>`;
+                var radius = "60px 0 0 60px";
+                if (progress1 >= progress2) radius = "60px";
+
+                document.querySelector(".achievements-list").innerHTML += `<div><label>${achievement}</label><div class="achievement-progress"><label style="font-size: 1.5rem;">${progress1}/${progress2}</label><div class="progress-bar"><div style="width: ${(progress1 / progress2) * 100}%; border-radius: ${radius};"></div></div></div><label style="font-size: 1rem; margin-top: 5%;">${achievements[achievement].Description}</label></div>`;
             }
 
             //Fill stats
             const stats = data["stats"];
 
             document.querySelector("#stats").innerHTML = `Games played<br> ${stats["GamesPlayed"]}<br><br>Seconds survived<br> ${stats["SecondsSurvived"]}s<br><br>Distance traveled<br> ${stats["DistanceTraveled"]}km<br><br>Obstacles overcome<br> ${stats["ObstaclesOvercome"]}<br><br>Favorite power<br> ${stats["FavoritePower"]}<br><br>Coins collected<br> ${stats["CoinsCollected"]}c<br><br>Coins spent<br> ${stats["CoinsSpent"]}c<br><br>`;
+        
         }
     }
 

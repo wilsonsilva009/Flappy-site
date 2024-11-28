@@ -85,65 +85,63 @@ async function Register(){
     var URL = FirebaseURL + Username + ".json";
 
     var DATA =  {
-        "coins": 0,
-        "password": Password,
-        "powers" : {
-            "MoreCoins": 0,
-            "DoubleCoins": 0,
-            "SeeAhead": 0,
-            "SlowTime": 0,
-            "SmallSize": 0,
-            "Invulnerability": 0
-        },
-        "achievements" : {
-            "Online" : {
-                "Description" : "Login for the first time",
-                "Progress" : [0,1]
-            },
-            "The beginning" : {
-                "Description" : "Survive for 30 seconds",
-                "Progress" : [0,30]
-            },
-            "Bring home the bacon" : {
-                "Description" : "Collect 50 coins",
-                "Progress" : [25,50]
-            },
-            "What a deal!" : {
-                "Description" : "Buy something from the shop",
-                "Progress" : [0,1]
-            },
-            "Streamlined" : {
-                "Description" : "Use an item",
-                "Progress" : [0,1]
-            },
-            "All over again" : {
-                "Description" : "Survive until sunrise",
-                "Progress" : [0,1]
-            }
-        },
-        "stats" : {
-            "GamesPlayed" : 0,
-            "SecondsSurvived" : 0,
-            "DistanceTraveled" : 0,
-            "CoinsCollected" : 0,
-            "CoinsSpent" : 0,
-            "ObstaclesOvercome" : 0,
-            "FavoritePower" : 0
-        }
-    }
+		"coins": 0,
+		"password": "",
+		"powers" : {
+			"MoreCoins": 0,
+			"DoubleCoins": 0,
+			"SeeAhead": 0,
+			"SlowTime": 0,
+			"SmallSize": 0,
+			"Invulnerability": 0
+		},
+		"achievements" : {
+			"Online" : {
+				"Description" : "Login for the first time",
+				"Progress" : [0,1]
+			},
+			"The beginning" : {
+				"Description" : "Survive for 30 seconds",
+				"Progress" : [0,30]
+			},
+			"Bring home the bacon" : {
+				"Description" : "Collect 50 coins",
+				"Progress" : [0,50]
+			},
+			"What a deal!" : {
+				"Description" : "Buy something from the shop",
+				"Progress" : [0,1]
+			},
+			"Streamlined" : {
+				"Description" : "Use an item",
+				"Progress" : [0,1]
+			},
+			"All over again" : {
+				"Description" : "Survive until sunrise",
+				"Progress" : [0,1]
+			}
+		},
+		"stats" : {
+			"GamesPlayed" : 0,
+			"SecondsSurvived" : 0,
+			"DistanceTraveled" : 0,
+			"CoinsCollected" : 0,
+			"CoinsSpent" : 0,
+			"ObstaclesOvercome" : 0,
+			"FavoritePower" : 0
+		}
+	}
 
+    DATA["password"] = Password;
 
     const jsonData = JSON.stringify(DATA);
 
     // Fix here -------------------------------------------------------
-    fetch(URL, {
+    await fetch(URL, {
         method: 'PUT',
         headers: {},
         body: jsonData
     })
-    .then(response => response.json())
-    .then(data => console.log('Data: ', data))
-    .catch(error => console.error('Erro ao enviar dados:', error));
 
     localStorage.setItem("Username",Username)
     window.location.href = "profile.html"

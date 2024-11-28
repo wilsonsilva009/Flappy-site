@@ -1,3 +1,0 @@
-
-
-Error in registering -> Not awaiting until request finishes
