@@ -98,7 +98,7 @@ async function Register(){
 		"achievements" : {
 			"Online" : {
 				"Description" : "Login for the first time",
-				"Progress" : [0,1]
+				"Progress" : [1,1]
 			},
 			"The beginning" : {
 				"Description" : "Survive for 30 seconds",
