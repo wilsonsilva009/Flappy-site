@@ -1,0 +1,1 @@
+Fix bug with password holder blocking delete account and finish doing the password holder.

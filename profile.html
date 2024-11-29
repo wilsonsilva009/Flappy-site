@@ -162,32 +162,7 @@
         transform: translateX(10px);
     }
 
-    .changepassword-holder, .changepassword-holder>div{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .changepassword-holder>div{
-        display: none;
-    }
-
-    .changepassword-holder input{
-        border: 3px solid rgba(0, 0, 0, .9);
-        font-size: 1.5rem;
-        border-radius: 15px;
-        height: 30px;
-        padding-left: 15px;
-        letter-spacing: 1px;
-    }
-
-    .changepassword-holder>img{
-        width: 50px;
-    }
-
-    .deleteconfirm-holder{
-        transition: opacity .3s ease;
+    .deleteconfirm-holder, .changepassword-holder{
         opacity: 0;
 
         display: flex;
@@ -213,7 +188,12 @@
         transition: all .3s ease;
     }
 
-    .deleteconfirm-holder:hover{
+    .changepassword-holder{
+        height: 40vh;
+        width: 35vw;
+    }
+
+    .deleteconfirm-holder:hover, .changepassword-holder:hover{
         box-shadow: inset 0px 0px 10px -5px rgba(0, 0, 0,.4);
     }
 
@@ -222,7 +202,27 @@
         font-size: 1.1rem;
     }
 
-    .deleteconfirm-holder>div:not(#buttons-holder){
+    .changepassword-holder>:nth-child(3), .changepassword-holder>:nth-child(5){
+        align-self: flex-start;
+        font-size: 1.2rem;
+    }
+
+    .changepassword-holder input{
+        align-self: flex-start;
+
+        background-color: rgba(0,0,0,.15);
+        border-radius: 60px;
+        border: 1px solid black;
+        font-size: 1.3rem;
+
+        margin-left: 25px;
+        padding-left: 10px;
+
+        height: 10%;
+        width: 65%;
+    }
+
+    .deleteconfirm-holder>div:not(#buttons-holder), .changepassword-holder>div:not(#buttons-holder){
         height: 4px;
         width: 100%;
         border-radius: 1000px;
@@ -407,15 +407,12 @@
             padding: 5vh 4vw;
         }
 
-        .changepassword-holder{
-            flex-direction: column;
-            align-items: start;
-        }
-
-        .deleteconfirm-holder{
+        .deleteconfirm-holder, .changepassword-holder{
             top: 75%;
             width: 75vw;
         }
+
+        
     }
 </style>
 
@@ -465,15 +462,13 @@
 
     <div class="options-holder">
         <h1>Opções:</h1>
-        <button onclick="DeleteAccountVisibility()" id="deleteaccount">Apagar conta</button>
-        <div class="changepassword-holder">
+            <button onclick="DeleteAccountVisibility()" id="deleteaccount">Apagar conta</button>
             <button onclick="ChangePasswordVisibility()" id="changepassword">Mudar password</button>
-            <div>
-                <input id="newpassword" type="text">
-                <img onclick="ChangePassword()" src="Images/Confirm.png">
-            </div>
         </div>
     </div>
+
+
+    <!--DELETE ACCOUNT-->
 
     <div class="deleteconfirm-holder">
         <label>Tem a certeza?</label>
@@ -486,6 +481,23 @@
         </div>
     </div>
     
+
+    <!--CHANGE PASSWORD-->
+
+    <div class="changepassword-holder">
+        <label>Alterar a password</label>
+        <div></div>
+        <label>Password antiga</label>
+        <input id="oldpassword" type="text">
+        <label>Password nova</label>
+        <input id="newpassword" type="text">
+        <div></div>
+        <div id="buttons-holder">
+            <button onclick="ChangePasswordClose()" id="changepass-close"><img src="Images/Cross.png"></button>
+            <button onclick="ChangePassword()" id="changepass-confirm"><img src="Images/Check.png"></button>
+        </div>
+    </div>
+
 
 </body>
 
@@ -597,14 +609,12 @@
         document.querySelector(".deleteconfirm-holder").style.opacity = "0";
     }
 
-    var CP_Visible = false
     function ChangePasswordVisibility(){
-        if (CP_Visible){
-            document.querySelector(".changepassword-holder>div").style.display = "none";
-        }else{
-            document.querySelector(".changepassword-holder>div").style.display = "flex";
-        }
-        CP_Visible = !CP_Visible;
+        document.querySelector(".changepassword-holder").style.opacity = "1";
+    }
+
+    function ChangePasswordClose(){
+        document.querySelector(".changepassword-holder").style.opacity = "0";
     }
     
 </script>
