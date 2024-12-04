@@ -119,7 +119,11 @@ async function Register(){
 			"All over again" : {
 				"Description" : "Survive until sunrise",
 				"Progress" : [0,1]
-			}
+			},
+            "0 Noções" : {
+                "Description": "Become what Antonino never will",
+                "Progress" : [1,1]
+            }
 		},
 		"stats" : {
 			"GamesPlayed" : 0,

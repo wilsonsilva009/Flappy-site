@@ -41,6 +41,10 @@ header button:hover{
     box-shadow: inset 0px 0px 50px 5px rgba(0,0,0,.2), 5px 5px rgba(0,0,0,.4);
 }
 
+header button:active{
+    transform: scale(.9) translateY(-5px);
+}
+
 header img{
     width: clamp(10px, 50vw, 350px);
     animation: img-anim 3s ease-in-out infinite backwards;
@@ -150,6 +154,7 @@ form img {
 /*------   Erro   ------*/
 .error-holder{
     opacity: 0;
+    pointer-events: none;
 
     font-family: "Londrina Solid", sans-serif;
     font-weight: bold;

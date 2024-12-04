@@ -16,6 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Your profile Flappy PIP</title>
 	<link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <style>
@@ -132,7 +133,7 @@
     }
 
     #deleteaccount:active{
-        transform: translateX(10px);
+        transform: scale(.95) translateX(10px);
     }
 
     #changepassword{
@@ -159,11 +160,12 @@
     }
 
     #changepassword:active{
-        transform: translateX(10px);
+        transform: scale(.95) translateX(10px);
     }
 
     .deleteconfirm-holder, .changepassword-holder{
         opacity: 0;
+        pointer-events: none;
 
         display: flex;
         flex-direction: column;
@@ -498,7 +500,9 @@
         </div>
     </div>
 
-
+    <div class="error-holder">
+        <label></label>
+    </div>
 </body>
 
 <script>
@@ -545,7 +549,7 @@
             //Fill stats
             const stats = data["stats"];
 
-            document.querySelector("#stats").innerHTML = `Games played<br> ${stats["GamesPlayed"]}<br><br>Seconds survived<br> ${stats["SecondsSurvived"]}s<br><br>Distance traveled<br> ${stats["DistanceTraveled"]}km<br><br>Obstacles overcome<br> ${stats["ObstaclesOvercome"]}<br><br>Favorite power<br> ${stats["FavoritePower"]}<br><br>Coins collected<br> ${stats["CoinsCollected"]}c<br><br>Coins spent<br> ${stats["CoinsSpent"]}c<br><br>`;
+            document.querySelector("#stats").innerHTML = `Games played<br> ${stats["GamesPlayed"]}<br><br>Seconds survived<br> ${stats["SecondsSurvived"]}s<br><br>Distance traveled<br> ${stats["DistanceTraveled"] / 1000}km<br><br>Obstacles overcome<br> ${stats["ObstaclesOvercome"]}<br><br>Favorite power<br> ${stats["FavoritePower"]}<br><br>Coins collected<br> ${stats["CoinsCollected"]}c<br><br>Coins spent<br> ${stats["CoinsSpent"]}c<br><br>`;
         
         }
     }
@@ -573,13 +577,20 @@
     }
 
     async function ChangePassword(){
+        const oldpassword = document.getElementById("oldpassword").value;
+        const newpassword = document.getElementById("newpassword").value
+
         var URL = FirebaseURL + Username + ".json";
 
         const response = await fetch(URL);
         const data = await response.json();
 
         if (data !== null) {
-            data.password = document.getElementById("newpassword").value
+            if (data.password != oldpassword){
+                ShowError("Password errada");
+                return;
+            }
+            data.password = newpassword
 
             const newData = JSON.stringify(data);
 
@@ -590,7 +601,7 @@
             })
 
             document.getElementById("newpassword").value = "";
-            ChangePasswordVisibility();
+            ChangePasswordClose();
         } else{
             ShowError("Utilizador não existe");
         }
@@ -603,18 +614,22 @@
 
     function DeleteAccountVisibility(){
         document.querySelector(".deleteconfirm-holder").style.opacity = "1";
+        document.querySelector(".deleteconfirm-holder").style.pointerEvents = "auto";
     }
 
     function DeleteAccountClose(){
         document.querySelector(".deleteconfirm-holder").style.opacity = "0";
+        document.querySelector(".deleteconfirm-holder").style.pointerEvents = "none";
     }
 
     function ChangePasswordVisibility(){
         document.querySelector(".changepassword-holder").style.opacity = "1";
+        document.querySelector(".changepassword-holder").style.pointerEvents = "auto";
     }
 
     function ChangePasswordClose(){
         document.querySelector(".changepassword-holder").style.opacity = "0";
+        document.querySelector(".changepassword-holder").style.pointerEvents = "none";
     }
     
 </script>

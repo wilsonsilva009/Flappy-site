@@ -1,1 +1,4 @@
-Fix bug with password holder blocking delete account and finish doing the password holder.
+Flappy PIP:
+
+Adicionar pássaros no background e aviões, mas mais rapidos que o player.
+Á medida que a velocidade aumentar o player ultrapassa-os.
