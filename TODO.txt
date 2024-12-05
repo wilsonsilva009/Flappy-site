@@ -1,4 +1,3 @@
 Flappy PIP:
 
-Adicionar pássaros no background e aviões, mas mais rapidos que o player.
-Á medida que a velocidade aumentar o player ultrapassa-os.
+Rework spawning tile system to spawn in nodes kind of way
