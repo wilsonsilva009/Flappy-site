@@ -60,12 +60,21 @@
     <div class="main-content">
         <h1>Obrigado por jogar!</h1>
 
-        <img src="Images/DownloadButton.png">
+        <a href="game.apk" download="Flappy-Pip.apk"><img src="Images/DownloadButton.png"></a>
 
         <img id="mascot" src="Images/PipBlue.png">
     </div>
 
 </body>
+
+<script>
+    const Username = localStorage.getItem("Username");
+
+    //No user found, return to login
+    if (!Username){
+        window.location.href = "index.html";
+    }
+</script>
 
 
 </html>
