@@ -527,16 +527,14 @@
             
             //Fill powers
             const powers = data["powers"];
-            console.log(powers);
-            if (powers.length){
-                for (power in powers){
-                    if (powers[power] > 0)
-                        document.querySelector(".items-grid").innerHTML += `<div><img src="Images/${power}.png" width="100%"><label>${data["powers"][power]}</label></div>`;
-                }
+
+            for (power in powers){
+                if (powers[power] > 0)
+                    document.querySelector(".items-grid").innerHTML += `<div><img src="Images/${power}.png" width="100%"><label>${data["powers"][power]}</label></div>`;
             }
+            
             //Fill achievements
             const achievements = data["achievements"];
-            console.log(achievements);
             for (achievement in achievements){
                 const progress1 = achievements[achievement]["Progress"][0];
                 const progress2 = achievements[achievement]["Progress"][1];
